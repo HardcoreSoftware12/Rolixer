@@ -21,5 +21,5 @@ app.listen(port,()=>{
     
     console.log("server started at port",port);
     connect()
-    // connects to the postgre sql data base fetched dummy data and inserts it.
+    // connects to the postgre sql data base and insrts the dummy data to it.
 })

@@ -36,17 +36,14 @@ const allTransaction = async(req,res)=>{
             return res.json(data)
         }
         const data = filterByDate(transaction,month)
-        let count = transaction.length;
-        // console.log(data);
-
-       
+        // let count = transaction.length;
+        
         res.json(data)
 
         
         
     } catch (error) {
         console.error('Error fetching product transactions:', error);
-        res.status(500).json({ error: 'Internal server error' });
         
     }
 
@@ -66,7 +63,7 @@ const statistics = async(req,res)=>{
         let totalSaleAmount=0;
         let notSold=0;
         data.map((product,i)=>{
-            // console.log(product);
+            
             if(product.sold){
                 sold += 1;
                 totalSaleAmount += product.price
@@ -91,7 +88,7 @@ const barChart = async(req,res)=>{
         const {month} = req.query;
         const transactions = await productList.findAll({});
         let data = filterByDate(transactions,month);
-        // console.log(data);
+      
         let barchart = []
         let priceranges = [
             {range :'0- 100', min:0, max:100},
@@ -106,15 +103,7 @@ const barChart = async(req,res)=>{
             {range :'901- above', min:901, max:Infinity}
         ]
 
-    //   for(const range of priceranges){
-    //     data.map((product,index)=>{
-            
-    //         if(product.price >= range.min && product.price <= range.max){ 
-               
-    //             barchart.push({range : range.range})
-    //         }
-    //     })
-    //   }
+  
 
     for(const range of priceranges){
         const count = data.filter(product => product.price >= range.min && product.price <= range.max).length;
@@ -124,8 +113,6 @@ const barChart = async(req,res)=>{
     res.status(200).json({text:"Using this data we can create barchart",barchart})
     
         
-
-        
     } catch (error) {
         console.error("error",error)
         
@@ -133,8 +120,7 @@ const barChart = async(req,res)=>{
 
 }
 
-
-
+//CREATE PIECHART BASED ON CATEGORY AND QUANTITY
 const pieChart = async(req,res)=>{
     const{month} = req.query;
    
@@ -146,18 +132,7 @@ const pieChart = async(req,res)=>{
     
         let pieArray = {};
         
-        // data.map((product,index)=>{
-        //     let count=1
-        //     if(pieArray.includes({category:product.category , items : count})){
-        //         console.log("heo");
-        //     }else{
-        //         let cat = product.category;
-                
-        //         pieArray.push({category:cat , items : count})
-    
-        //     }
-        // })
-
+      
         
             data.forEach(product =>{
                 let category = product.category

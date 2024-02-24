@@ -4,11 +4,68 @@
 
 
 
-## Badges
+## prerequisites
 
-Add badges from somewhere like: [shields.io](https://shields.io/)
+#### 1.Install nodejs and postgresql 
+#### 2.create database product
+#### 3.create table productLists
 
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![AGPL License](https://img.shields.io/badge/license-AGPL-blue.svg)](http://www.gnu.org/licenses/agpl-3.0)
+
+
+## Installation
+
+Clone git repository
+
+```bash
+  npm install 
+  npm start
+```
+    
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`DB_USERNAME`
+
+`DB_PASSWORD`
+
+`PORT`
+
+
+## API End-Points
+
+
+#### Dummy API
+
+```http
+  https://s3.amazonaws.com/roxiler.com/product_transaction.json
+```
+
+#### Get all transactions [All end-points require month]
+
+```http
+  GET /api/getAllTransactions
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `month` | `string` | **Required**. month of transactions |
+| `search` | `string` |  keywords to search |
+
+#### Other Routes 
+
+```http
+  GET /api/stats
+```
+```http
+  GET /api/barchart
+```
+```http
+  GET /api/piechart
+```
+```http
+  GET /api/combinedApi
+```
+
+
 
